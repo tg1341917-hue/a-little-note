@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8eee8">
+<title>For Navya, with a little honesty</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{
+  --ink:#342c32;--muted:#786b73;--rose:#b85e72;--rose2:#d88c98;
+  --paper:#fffaf6;--line:rgba(115,75,83,.13);--plum:#614653;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;color:var(--ink);font-family:'DM Sans',sans-serif;
+  background:
+   radial-gradient(ellipse at 12% 12%,rgba(231,180,176,.48),transparent 34%),
+   radial-gradient(ellipse at 88% 88%,rgba(216,194,177,.52),transparent 34%),
+   #f8eee8;
+  display:grid;place-items:center;padding:22px;overflow-x:hidden
+}
+body:before,body:after{content:"";position:fixed;border:1px solid rgba(184,94,114,.16);border-radius:50%;pointer-events:none}
+body:before{width:440px;height:440px;top:-300px;right:-160px}
+body:after{width:360px;height:360px;bottom:-260px;left:-140px}
+.shell{width:min(100%,610px);position:relative}
+.topline{display:flex;justify-content:space-between;align-items:center;margin:0 5px 13px;color:#8c747c;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.dots{display:flex;gap:6px}
+.dot{width:6px;height:6px;border-radius:20px;background:#dfc9c8;transition:.3s}
+.dot.active{width:21px;background:var(--rose)}
+.card{
+ min-height:590px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.85);
+ border-radius:30px;background:rgba(255,250,246,.91);box-shadow:0 28px 90px rgba(89,58,67,.14);
+ padding:clamp(27px,6vw,48px);display:flex;flex-direction:column;justify-content:center;
+}
+.screen{display:none;animation:enter .55s cubic-bezier(.2,.75,.25,1) both}
+.screen.active{display:block}
+@keyframes enter{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.kicker{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:17px}
+h1,h2{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-.035em;margin:0}
+h1{font-size:clamp(42px,9vw,65px);line-height:1.03}
+h2{font-size:clamp(32px,7vw,43px);line-height:1.12}
+.lead{font-size:15px;line-height:1.8;color:var(--muted);max-width:430px;margin:18px 0 0}
+.name{color:var(--rose)}
+.rule{width:42px;height:2px;background:#d99ba2;margin:24px 0}
+.envelope-area{display:grid;place-items:center;margin:30px 0 25px}
+.envelope{width:150px;height:105px;position:relative;border-radius:9px;background:#e9bfc0;box-shadow:0 13px 24px rgba(128,76,85,.15);cursor:pointer;transition:transform .25s}
+.envelope:hover{transform:translateY(-5px) rotate(-2deg)}
+.envelope:before{content:"";position:absolute;inset:0;background:#f2d2ce;clip-path:polygon(0 0,50% 58%,100% 0);border-radius:9px 9px 0 0;z-index:2}
+.envelope:after{content:"";position:absolute;inset:0;background:#d99ba2;clip-path:polygon(0 100%,50% 42%,100% 100%);border-radius:0 0 9px 9px;z-index:3}
+.seal{position:absolute;z-index:4;left:50%;top:52%;transform:translate(-50%,-50%);width:31px;height:31px;border-radius:50%;background:#fff6ef;display:grid;place-items:center;color:var(--rose);font-size:16px;box-shadow:0 2px 8px #b77c8066}
+.tap{font-size:12px;color:#987e83;letter-spacing:.04em}
+.btnrow{display:flex;gap:11px;flex-wrap:wrap;margin-top:29px}
+button{font:600 13px 'DM Sans',sans-serif;cursor:pointer;border:0;border-radius:999px;padding:14px 21px;transition:.2s}
+.primary{background:var(--plum);color:white;box-shadow:0 8px 18px #61465330}
+.primary:hover{transform:translateY(-2px);background:#4f3946}
+.secondary{background:#f3e8e4;color:#795d66}
+.secondary:hover{background:#eedbd8}
+.note{padding:22px 23px;background:#fff;border:1px solid var(--line);border-radius:18px;margin-top:24px}
+.note p{font-size:14px;line-height:1.85;color:#675b61;margin:0 0 13px}
+.note p:last-child{margin:0}
+.note strong{color:#a65369}
+.quote{font-family:'Playfair Display',serif;font-size:21px;line-height:1.5;color:#79515f;margin:23px 0 0}
+.small{font-size:12px;line-height:1.7;color:#9a858a;margin-top:18px}
+.endmark{font-size:38px;margin-bottom:17px}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:17px;padding:0 5px;color:#9b858a;font-size:10px;letter-spacing:.05em}
+.back{background:transparent;color:#927d83;padding:10px 12px}
+.confetti{position:fixed;pointer-events:none;font-size:15px;animation:rise 1.8s ease-out forwards;z-index:10}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(.7) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translateY(-150px) scale(1.2) rotate(35deg)}}
+@media(max-width:480px){.card{min-height:610px;border-radius:24px;padding:27px 22px}.lead{font-size:14px}.note{padding:18px}.note p{font-size:13px}.footer{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+ <div class="topline"><span>A note for Navya</span><div class="dots"><i class="dot active"></i><i class="dot"></i><i class="dot"></i></div></div>
+ <div class="card">
+  <section class="screen active" id="s1">
+   <div class="kicker">Not a grand gesture · just a genuine one</div>
+   <h1>Hey,<br><span class="name">Navya.</span></h1>
+   <p class="lead">I made you a tiny corner of the internet because I wanted to say something properly — without making a big deal out of it.</p>
+   <div class="envelope-area"><div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the note"><div class="seal">♡</div></div></div>
+   <div class="tap">A little note is waiting inside. Tap the envelope.</div>
+   <div class="btnrow"><button class="primary" onclick="go(2)">Open the note <span aria-hidden="true">↗</span></button></div>
+  </section>
+
+  <section class="screen" id="s2">
+   <div class="kicker">Page 02 · What I wanted to say</div>
+   <h2>Okay, I got<br>a little carried away.</h2>
+   <div class="rule"></div>
+   <div class="note">
+    <p>That food reel turned into a very questionable reply from me. 😅</p>
+    <p>I meant it as flirting, but I can see that it crossed a boundary for you. <strong>I'm sorry I made you uncomfortable.</strong></p>
+    <p>You were clear when you said not to cross limits, and I heard you. I shouldn't brush that off as “just a joke” or expect you to be okay with it.</p>
+    <p>I'll be more thoughtful and respect your comfort instead of assuming what's okay.</p>
+   </div>
+   <div class="btnrow">
+    <button class="secondary" onclick="go(1)">← Back</button>
+    <button class="primary" onclick="go(3)">One last thing →</button>
+   </div>
+  </section>
+
+  <section class="screen" id="s3">
+   <div class="kicker">Page 03 · No pressure, promise</div>
+   <div class="endmark">🌷</div>
+   <h2>Your comfort<br>comes first.</h2>
+   <p class="quote">“A sincere sorry should come with better actions, not more words.”</p>
+   <p class="lead">You don't need to reply right now, and you don't owe me instant forgiveness. I just wanted you to know that I understand, and I'll do better.</p>
+   <div class="rule"></div>
+   <h2 style="font-size:27px">Take your time, Navya. ♡</h2>
+   <div class="small">P.S. I’m retiring from the food-related flirting department for a bit. I clearly need training. 😭</div>
+   <div class="btnrow">
+    <button class="secondary" onclick="go(2)">← Read again</button>
+    <button class="primary" id="finish">That's my note ♡</button>
+   </div>
+  </section>
+ </div>
+ <div class="footer"><span>made with honesty, not pressure</span><span id="pageLabel">01 / 03</span></div>
+</main>
+<script>
+const screens=[...document.querySelectorAll('.screen')];
+const dots=[...document.querySelectorAll('.dot')];
+const label=document.getElementById('pageLabel');
+function go(n){
+ screens.forEach((s,i)=>s.classList.toggle('active',i===n-1));
+ dots.forEach((d,i)=>d.classList.toggle('active',i===n-1));
+ label.textContent=String(n).padStart(2,'0')+' / 03';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('envelope').addEventListener('click',()=>go(2));
+document.getElementById('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go(2)}});
+document.getElementById('finish').addEventListener('click',()=>{
+ const symbols=['♡','✦','🌸','✧'];
+ for(let i=0;i<13;i++){
+  const el=document.createElement('span');el.className='confetti';
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=(15+Math.random()*70)+'vw';el.style.top=(55+Math.random()*25)+'vh';
+  el.style.animationDelay=(Math.random()*.35)+'s';document.body.appendChild(el);
+  setTimeout(()=>el.remove(),2300);
+ }
+});
+</script>
+</body>
+</html>
